@@ -86,32 +86,24 @@ const data = [
   },
   {
     title: 'How do I upload my list of phone numbers?',
-    content: `To upload a recipient list, log in and vist the Manage Lists section of your account. Your phone number list must be saved as a Comma Delimited (.CSV) or a Tab Delimited (.TXT) file with your phone numbers in the first column only. Contact names, which are optional, can be included in the second column.
-
-When uploading your list with contact names, be sure to check the box to indicate your file has contact names. Additionally, you can copy and paste your phone numbers in to the box provided on the website. On a Mac? Be sure to save your file as a Windows Formatted .TXT or .CSV file before uploading.`,
+    content: `To upload your phone list, all you need is phone numbers in column A of your excel file saved as .CSV
+`,
   },
   {
     title: 'Do I have to use all of my delivery credits at once?',
-    content: `No, you do not. If you purchase 100 deliveries for $10, you can send them out one at a time, ten at a time, or all at once.
+    content: `No you get 6 months to use them from time of purchase.
+
+No contracts or set up fees, get started now!
 
 `,
   },
-  {
-    title: 'Where do other people get their lists?',
-    content: `Customers, prospects who have provided their number, partners, colleagues, donors, etc. We hope you’ll call people who will want to hear your voice and your message. We do not provide recommendations for list buying, because that’s not the most effective use of our technology and not what it is designed for. We do not condone spamming people with unwanted voicemails or sending to people who would not want to hear from you. We take pride in the technology that we offer and it is important to us that it is used responsibly and respectfully.
 
-`,
-  },
   {
     title: 'Do my messages ever expire?',
     content: `
 All Pay As You Go plan messages never expire.
 
 Monthly Messaging plan credits are valid for 30 calendar days after your initial date of purchase and do not roll over towards the next month.`,
-  },
-  {
-    title: 'What is your guarantee?',
-    content: `We'll do everything in our power to make sure you are happy with the service. However, if you aren't completely satisfied with the Universal Dialers' service after your first campaign, we'll refund you. Just contact our Customer Care team`,
   },
 ]
 

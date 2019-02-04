@@ -17,11 +17,11 @@ const Questions = () => {
             Have Questions for Us?
           </Header>
           <p style={{ fontSize: '1.33em', textAlign: 'center' }}>
-            Call our friendly support team at (949) 555-5555
+            Call our friendly support team at (866)403-5986
           </p>
           <div style={{ textAlign: 'center' }}>
             <a
-              href="mailto:sample@gmail.com"
+              href="mailto:james@universaldialers.com"
               size="large"
               style={{ fontSize: '1.1em' }}
             >

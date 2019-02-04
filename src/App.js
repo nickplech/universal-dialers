@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 import Particles from 'react-particles-js'
 import FormDialog from './PopForm'
 import Zoom from '@material-ui/core/Zoom'
@@ -7,10 +6,11 @@ import StepsSection from './StepsSection'
 import styled from 'styled-components'
 import logo from './logoo.png'
 import mockup from './Mockup.jpg'
-import pic from './components.png'
-import pic1 from './rocket.png'
-import pic2 from './themes.png'
-import pic3 from './testing.png'
+import DotsMobileStepper from './StepperNew'
+import Pulse from './Pulse'
+import mainPhone from './logophone.png'
+
+import vm from './vm.png'
 import Footer from './Footer'
 import {
   Button,
@@ -24,13 +24,16 @@ import {
 } from 'semantic-ui-react'
 
 const Img = styled.img`
-  height: 100px;
+  height: 70px;
+  padding: 20px;
+  background: white;
+  border-radius: 50%;
   width: auto;
 `
 
 const Hero = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   @media (min-width: 1200px) {
     .media {
       background-position: center center;
@@ -47,7 +50,7 @@ const Butt = styled.div`
     font-size: 18px;
     border: 2px solid;
     margin-top: 30px;
-    background: rgba(100, 100, 240, 1);
+    background: rgba(30, 100, 210, 1);
     width: 270px;
     color: white;
 
@@ -62,16 +65,12 @@ const Butt = styled.div`
     margin-bottom: 12px;
   }
 `
-const OutSpan = styled.span`
-  .element {
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-      1px 1px 0 #fff;
-  }
-`
+const OutSpan = styled.span``
 const LogoSmaller = styled.img`
   width: 560px;
   height: auto;
-  margin-top: 200px;
+  margin-top: 100px;
+
   @media (max-width: 768px) {
     width: 320px;
     height: auto;
@@ -79,27 +78,20 @@ const LogoSmaller = styled.img`
   }
 `
 const HomepageHeading = ({ mobile }) => (
-  <Container text>
+  <Container textAlign="center">
     <Zoom in style={{ transitionDelay: '500ms' }}>
       <LogoSmaller src={logo} alt="logo" />
     </Zoom>
     <Header
       as="h1"
-      content={
-        ' Voice Broadcasting ' +
-        ' ' +
-        ' | ' +
-        ' Cloud Predictive Dialer ' +
-        ' | ' +
-        ' SMS'
-      }
+      content={'Voice Broadcasting | Cloud Predictive Dialer | SMS'}
       inverted
       style={{
         position: 'relative',
         top: '25px',
         textTransform: 'uppercase',
         fontSize: mobile ? '1em' : '1.5em',
-        textAlign: 'left',
+        textAlign: 'center',
         fontWeight: '900',
         marginTop: '0',
         marginBottom: '0',
@@ -111,31 +103,18 @@ const HomepageHeading = ({ mobile }) => (
         top: '20px',
         textTransform: 'uppercase',
         fontSize: mobile ? '1em' : '2.5em',
-        textAlign: 'left',
+        textAlign: 'center',
         fontWeight: '900',
         marginTop: '0',
         marginBottom: '0',
       }}
     >
-      <OutSpan className="element" style={{ color: 'rgba(100,100,240,1)' }}>
+      <OutSpan className="element" style={{ color: '#206fe6' }}>
         &amp;
       </OutSpan>{' '}
       Ringless Voicemail Drops
     </p>
-    {/* <Header
-      as="h2"
-      content="Powerful, Modern, and Highly Effective Marketing Tools for Business"
-      inverted
-      style={{
-        position: 'relative',
-        top: '220px',
 
-        fontSize: mobile ? '1.5em' : '1.4em',
-        textAlign: 'left',
-        fontWeight: '100',
-        marginTop: '20px',
-      }}
-    /> */}
     <Butt>
       <FormDialog
         buttonTitle="Lets Get Started"
@@ -145,21 +124,6 @@ const HomepageHeading = ({ mobile }) => (
   </Container>
 )
 
-const ICONS = [
-  {
-    url: `${pic}`,
-  },
-  // {
-  //   url: `${pic1}`,
-  // },
-  {
-    url: `${pic2}`,
-  },
-  {
-    url: `${pic3}`,
-  },
-]
-
 const MockUpScreen = styled.img`
   width: 500px;
   height: auto;
@@ -168,6 +132,58 @@ const MockUpScreen = styled.img`
     height: auto;
   }
 `
+
+const Phone = styled.img`
+  width: auto
+  height: 600px;
+  @media (max-width: 662px) {
+    display: flex;
+    justify-self: center;
+  }
+`
+
+const VoiceMail = styled.div`
+  position: absolute;
+  box-shadow: -4px 4px 8px 3px rgba(0, 0, 0, 0.2);
+  top: 130px;
+  display: flex;
+  flex-flow: column;
+  background: #e0e0e0;
+  border-radius: 10px;
+  min-height: 120px;
+  width: 320px;
+  opacity: 1;
+  .top {
+    background: #eeefef;
+    width: 100%;
+    flex-flow: row;
+    align-items: center;
+
+    display: inline-flex;
+    height: 40px;
+    border-radius: 10px 10px 0 0;
+    opacity: 1;
+  }
+
+  .bottom {
+    flex-flow: column;
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+  .flex-start {
+    justify-content: flex-start;
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .flex-end {
+    position: absolute;
+
+    right: 10px;
+  }
+`
+
 const HomepageLayout = ({ props }) => (
   <>
     <Hero>
@@ -190,10 +206,9 @@ const HomepageLayout = ({ props }) => (
       >
         <Grid container stackable verticalAlign="middle">
           <Grid.Row>
-            <Grid.Column floated="left" width={8}>
+            <Grid.Column width={16}>
               <HomepageHeading />
             </Grid.Column>
-            <Grid.Column floated="right" width={6} />
           </Grid.Row>
         </Grid>
         <Particles
@@ -233,15 +248,39 @@ const HomepageLayout = ({ props }) => (
       vertical
       style={{
         padding: '8em 0em',
-        background:
-          'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSJyZ2JhKDEwMCwxMDAsMjIwLDEpIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxMDAsMTMwLDIyMCwuNCkiIHN0cm9rZS13aWR0aD0iMiI+PC9wYXRoPgo8cGF0aCBkPSJNMjggMEwyOCAzNEwwIDUwTDAgODRMMjggMTAwTDU2IDg0TDU2IDUwTDI4IDM0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTAwLDEzMCwyMDAsLjQpIiBzdHJva2Utd2lkdGg9IjIiPjwvcGF0aD4KPC9zdmc+")',
+        backgroundColor: '#2b7cff',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%232e74ee' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23316cdd' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%233564cc' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23385cbb' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%233b54aa' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: 'cover',
+
         minHeight: '700px',
       }}
     >
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
-          <Grid.Column floated="right" width={7} />
-          <Grid.Column width={7}>
+          <Grid.Column width={8}>
+            {' '}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Pulse
+                item={
+                  <VoiceMail>
+                    <div className="top">
+                      <img src={vm} alt="text logo" className="flex-start" />
+                      <p style={{ marginTop: '15px' }}>NEW VOICEMAIL</p>
+                      <p className="flex-end">now</p>
+                    </div>
+
+                    <div className="bottom">
+                      <p style={{ marginBottom: '4px' }}>Universal Dialers</p>
+                      <p>You have 1 unread voicemail.</p>
+                    </div>
+                  </VoiceMail>
+                }
+              />
+
+              <Phone src={mainPhone} alt="voicemail drops" />
+            </div>
+          </Grid.Column>
+          <Grid.Column width={8}>
             <Header as="h3" style={{ fontSize: '2em', color: 'white' }}>
               Powerful, Modern &amp; Highly Effective Marketing Tools
             </Header>{' '}
@@ -265,7 +304,7 @@ const HomepageLayout = ({ props }) => (
         </Grid.Row>
       </Grid>
     </Segment>
-    <StepsSection />
+    <StepsSection filler={<DotsMobileStepper />} />
     <Segment style={{ padding: '0em' }} vertical>
       <Grid
         style={{ padding: '0em', textAlign: 'center' }}
@@ -273,18 +312,6 @@ const HomepageLayout = ({ props }) => (
         columns="equal"
         stackable
       >
-        {/* <Grid.Row
-          textAlign="center"
-          style={{ padding: ' 0px 0px', margin: '70px auto' }}
-        >
-          <Grid.Column width={2} />
-          {ICONS.map((icon, i) => (
-            <Grid.Column key={icon.i} width={4}>
-              <Img src={icon.url} key={icon.url} alt="icons" />
-            </Grid.Column>
-          ))}
-          <Grid.Column width={2} />
-        </Grid.Row> */}
         <Grid.Row textAlign="center">
           <Grid.Column
             style={{
@@ -306,7 +333,7 @@ const HomepageLayout = ({ props }) => (
               name="cog"
               circular
               size="large"
-              color="purple"
+              color="blue"
               inverted
               className="icon"
             />
@@ -323,7 +350,7 @@ const HomepageLayout = ({ props }) => (
               circular
               inverted
               size="large"
-              color="purple"
+              color="blue"
               className="icon"
             />
             <Header as="h3" style={{ fontSize: '1.6em' }}>
@@ -338,7 +365,7 @@ const HomepageLayout = ({ props }) => (
               circular
               inverted
               size="large"
-              color="purple"
+              color="blue"
               className="icon"
             />
             <Header as="h3" style={{ fontSize: '1.6em' }}>

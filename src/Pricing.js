@@ -11,6 +11,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import Questions from './Questions'
 import FormDialog from './PopForm'
+import StepsSection from './StepsSection'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
@@ -141,40 +142,52 @@ function Pricing(props) {
           </Typography>
         </div>
         {/* End hero unit */}
-        <Grid container spacing={40} alignItems="flex-end">
-          {tiers.map(tier => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} md={6}>
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  subheaderTypographyProps={{ align: 'center' }}
-                  className={classes.cardHeader}
-                />
-                <CardContent>
-                  <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h3" color="textPrimary">
-                      ${tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary">
-                      /mo
-                    </Typography>
-                  </div>
-                  {tier.description.map(line => (
-                    <Typography variant="subtitle1" align="center" key={line}>
-                      {line}
-                    </Typography>
-                  ))}
-                </CardContent>
-                <CardActions className={classes.cardActions}>
-                  <FormDialog buttonTitle="SIGN UP" />
-                </CardActions>
-              </Card>
+        <StepsSection
+          filler={
+            <Grid container spacing={40} alignItems="flex-end">
+              {tiers.map(tier => (
+                // Enterprise card is full width at sm breakpoint
+                <Grid item key={tier.title} xs={12} md={6}>
+                  <Card>
+                    <CardHeader
+                      title={tier.title}
+                      subheader={tier.subheader}
+                      titleTypographyProps={{ align: 'center' }}
+                      subheaderTypographyProps={{ align: 'center' }}
+                      className={classes.cardHeader}
+                    />
+                    <CardContent>
+                      <div className={classes.cardPricing}>
+                        <Typography
+                          component="h2"
+                          variant="h3"
+                          color="textPrimary"
+                        >
+                          ${tier.price}
+                        </Typography>
+                        <Typography variant="h6" color="textSecondary">
+                          /mo
+                        </Typography>
+                      </div>
+                      {tier.description.map(line => (
+                        <Typography
+                          variant="subtitle1"
+                          align="center"
+                          key={line}
+                        >
+                          {line}
+                        </Typography>
+                      ))}
+                    </CardContent>
+                    <CardActions className={classes.cardActions}>
+                      <FormDialog buttonTitle="SIGN UP" />
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          }
+        />
       </main>
       <Questions />
       <Footer />

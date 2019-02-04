@@ -7,15 +7,14 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
+
 import styled from 'styled-components'
-import { Icon } from 'semantic-ui-react'
 
 const Title = styled.h1`
   font-family: 'Kanit', sans-serif;
   text-align: center;
 
-  color: rgba(100, 100, 220, 1);
+  color: rgba(100, 180, 220, 1);
 `
 class FormDialog extends React.Component {
   state = {

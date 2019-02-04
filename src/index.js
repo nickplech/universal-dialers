@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Link, Route, BrowserRouter as Router } from 'react-router-dom'
 import ScrollToTop from './ScrollToTop'
+import TemporaryDrawer from './MobileMenu'
 import {
   Button,
   Container,
@@ -24,15 +25,6 @@ import Pricing from './Pricing'
 import './index.css'
 import 'semantic-ui-css/semantic.min.css'
 import * as serviceWorker from './serviceWorker'
-import { createGlobalStyle } from 'styled-components'
-
-const GlobalStyles = createGlobalStyle`
-  body {
-    @import url('https://fonts.googleapis.com/css?family=Kanit:100i|Racing+Sans+One');
-    font-family: 'Racing Sans One', cursive;
-font-family: 'Kanit', sans-serif;
-  }
-`
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -151,7 +143,11 @@ class DesktopContainer extends Component {
                     />
 
                     <Menu.Item position="right">
-                      <Button inverted style={{ padding: '8px 12px' }}>
+                      <Button
+                        href="https://app.universaldialers.com"
+                        inverted
+                        style={{ padding: '8px 12px' }}
+                      >
                         Log in
                       </Button>
                     </Menu.Item>
@@ -171,69 +167,16 @@ class DesktopContainer extends Component {
 class MobileContainer extends Component {
   state = {}
 
-  handleSidebarHide = () => this.setState({ sidebarOpened: false })
-
-  handleToggle = () => this.setState({ sidebarOpened: true })
-
   render() {
     const { children } = this.props
-    const { sidebarOpened } = this.state
 
     return (
       <div>
         <Responsive
-          as={Sidebar.Pushable}
           getWidth={getWidth}
           maxWidth={Responsive.onlyMobile.maxWidth}
         >
-          <Sidebar
-            as={Menu}
-            animation="push"
-            inverted
-            onHide={this.handleSidebarHide}
-            vertical
-            visible={sidebarOpened}
-          >
-            <Menu.Item active>Home</Menu.Item>
-
-            <Menu.Item>Services</Menu.Item>
-            <Menu.Item>Pricing</Menu.Item>
-            <Menu.Item>FAQ</Menu.Item>
-            <Menu.Item>Log in</Menu.Item>
-            <Menu.Item>Sign Up</Menu.Item>
-          </Sidebar>
-
-          <Sidebar.Pusher dimmed={sidebarOpened}>
-            <Segment
-              inverted
-              textAlign="center"
-              style={{ minHeight: 60, padding: '1em 0em' }}
-              vertical
-            >
-              <Container>
-                <Menu inverted pointing secondary size="large">
-                  <Menu.Item onClick={this.handleToggle}>
-                    <Icon name="sidebar" />
-                  </Menu.Item>
-                  <Menu.Item position="right">
-                    <Button as="a" inverted style={{ padding: '8px 12px' }}>
-                      Log in
-                    </Button>
-
-                    <Button
-                      as="a"
-                      inverted
-                      style={{ marginLeft: '0.5em', padding: '8px 12px' }}
-                    >
-                      Sign Up
-                    </Button>
-                  </Menu.Item>
-                </Menu>
-              </Container>
-            </Segment>
-
-            {children}
-          </Sidebar.Pusher>
+          <TemporaryDrawer props={this.props.children} />
         </Responsive>
       </div>
     )
@@ -310,7 +253,6 @@ const DATA = [
 const ResponsiveContainer = ({ children, props }) => (
   <Router>
     <ScrollToTop>
-      <GlobalStyles />
       <DesktopContainer>{children}</DesktopContainer>
       <MobileContainer>{children}</MobileContainer>
       <Route exact path="/" component={HomepageLayout} />

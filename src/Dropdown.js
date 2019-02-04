@@ -51,7 +51,7 @@ const DropIt = styled.div`
     display: inline-block;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: rgba(100, 100, 240, 0.8);
+    color: rgba(100, 180, 240, 0.8);
     &:hover {
       color: #fff;
       background-color: orange;
@@ -103,7 +103,7 @@ class DropdownMultiple extends Component {
       <DropIt>
         <div
           className="dd-header"
-          style={{ display: 'inline-flex', color: 'rgba(100, 100, 240, .8)' }}
+          style={{ display: 'inline-flex', color: 'rgba(100, 180, 240, .8)' }}
           onClick={() => this.toggleList()}
         >
           <h3 className="dd-header-title">{headerTitle}</h3>

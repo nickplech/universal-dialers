@@ -54,7 +54,7 @@ const Footer = () => {
                 </Header>
                 <p>
                   Call one of our friendly support representatives at{' '}
-                  <a href="tel:8888968404">(888)896-8404</a>
+                  <a href="tel: 8664035986"> (866)403-5986</a>
                 </p>
               </Grid.Column>
             </Grid.Row>

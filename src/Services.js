@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Zoom from '@material-ui/core/Zoom'
+
+import Media from 'react-media'
 import Particles from 'react-particles-js'
-import {
-  Button,
-  Grid,
-  Header,
-  Container,
-  Icon,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-} from 'semantic-ui-react'
+import { Grid, Header, Container, Segment } from 'semantic-ui-react'
 import phones from './phones.jpg'
 import Questions from './Questions'
 import Footer from './Footer'
@@ -22,6 +12,7 @@ const Container2 = styled.div`
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
     url(${phones});
   background-size: cover;
+
   width: 100%;
   height: 350px;
   display: block;
@@ -47,6 +38,7 @@ const SubTitle = styled.h2`
   position: absolute;
   top: 140px;
   width: 390px;
+  font-weight: 200;
   left: 40px;
   color: white;
   font-family: 'Kanit', sans-serif;
@@ -62,44 +54,51 @@ const Services = props => (
     <Container2 phones>
       <Title>{props.title}</Title>
       <SubTitle>{props.subTitle}</SubTitle>
-
-      <Particles
-        style={{
-          width: '100%',
-          top: '100px',
-          height: '100%',
-          zIndex: '1',
-          opacity: '.5',
-          backgroundImage: 'url("")',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }}
-        params={{
-          particles: {
-            number: {
-              value: 80,
-            },
-            size: {
-              value: 3,
-            },
-          },
-          interactivity: {
-            events: {
-              onhover: {
-                enable: true,
-                mode: 'repulse',
-              },
-            },
-          },
-        }}
-      />
+      <Media query="(max-width: 868px)">
+        {matches =>
+          matches ? null : (
+            <Particles
+              style={{
+                width: '100%',
+                top: '100px',
+                height: '100%',
+                zIndex: '1',
+                opacity: '.5',
+                backgroundImage: 'url("")',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }}
+              params={{
+                particles: {
+                  number: {
+                    value: 80,
+                  },
+                  size: {
+                    value: 3,
+                  },
+                },
+                interactivity: {
+                  events: {
+                    onhover: {
+                      enable: true,
+                      mode: 'repulse',
+                    },
+                  },
+                },
+              }}
+            />
+          )
+        }
+      </Media>
     </Container2>
     <Segment
       vertical
       style={{
         padding: '8em 0em',
-        background:
-          'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSJyZ2JhKDEwMCwxMDAsMjIwLDEpIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxMDAsMTMwLDIyMCwuNCkiIHN0cm9rZS13aWR0aD0iMiI+PC9wYXRoPgo8cGF0aCBkPSJNMjggMEwyOCAzNEwwIDUwTDAgODRMMjggMTAwTDU2IDg0TDU2IDUwTDI4IDM0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMTAwLDEzMCwyMDAsLjQpIiBzdHJva2Utd2lkdGg9IjIiPjwvcGF0aD4KPC9zdmc+")',
+        backgroundColor: '#73c5ff',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(27,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%234912ff'/%3E%3Cstop offset='1' stop-color='%233898ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='22' height='22' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%2373c5ff' cx='11' cy='11' r='11'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.04'/%3E%3C/svg%3E")`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
         minHeight: '700px',
       }}
     >
